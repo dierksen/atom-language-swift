@@ -278,7 +278,31 @@
           (?!0[box]) \\g<floating-point-literal>
         |            \\g<integer-literal>
       '
-  'literal-string':
+  'literal-string': 
+    'patterns': [
+      {
+        'include': '#multi-line-literal-string'
+      }
+      {
+        'include': 'single-line-literal-string'
+      }
+    ]
+  'multi-line-literal-string':
+    'name': 'string.quoted.double.swift'
+    'begin': '"""'
+    'end': '"""'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.swift'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.swift'
+    'patterns': [
+      {
+        'include': '#quoted-text'
+      }
+    ]
+  'single-line-literal-string':
     'name': 'string.quoted.double.swift'
     'begin': '"'
     'end': '"'
